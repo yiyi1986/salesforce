@@ -1,0 +1,26 @@
+<template>
+    <template if:true={animales.data}>
+        <div class="slds-size_3-of-4">
+            <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-large container">Animals
+                <lightning-carousel scroll-duration="3" class="clip">
+                   
+                    <template for:each={animales.data} for:item="rec" for:index="index">
+                        
+                        <lightning-carousel-image 
+                            key={rec.id} src={rec.Animal__r.Image_URL__c} header={rec.Animal__r.Name}
+                            description={rec.Animal__r.Description__c} alternative-text={rec.Animal__r.Name}
+                            href="#">
+                            
+                        </lightning-carousel-image>
+                    </template>
+                </lightning-carousel>
+            </div>
+        </div>
+    </template>
+    <template if:true={errors}>
+        <c-error-panel
+            friendly-message="Error retrieving pictures"
+            errors={errors}
+        ></c-error-panel>
+    </template>
+</template>

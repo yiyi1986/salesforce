@@ -1,0 +1,15 @@
+<template>  
+    <div class="slds-box slds-theme_shade">  
+     <lightning-input type="number" name="amount" label="Principal Amount" onchange={handleNumberAmountChange} value={amount}></lightning-input>  
+     <lightning-input type="number" name="rate" label="Rate of interest" onchange={handleNumberRateChange} value={rate}></lightning-input>  
+     <lightning-input type="number" name="time" label="Time Period" onchange={handleNumberTimeChange} value={time}></lightning-input>  
+   </div>  
+   <div class="slds-box slds-theme_shade">  
+     <b>Total Accrued Amount is : </b>  
+      <P>{resultValue}</p>  
+   </div>  
+    <div class="slds-box slds-theme_shade">  
+     <lightning-button label="Calculate" onclick={total}> </lightning-button>  
+     
+    </div>  
+ </template>  

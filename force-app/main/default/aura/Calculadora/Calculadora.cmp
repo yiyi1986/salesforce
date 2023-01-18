@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name = 'height' type = 'double' default = '1.5'></aura:attribute>
+    <aura:attribute name = 'weight' type = 'double' default = '50'></aura:attribute>
+    <aura:attribute name = 'bmi' type = 'double'></aura:attribute>
+    <div>
+   <lightning:card iconName="standard:work_capacity_usage" title="Calc BMI">
+    <lightning:input name="input1" label="Enter height" value="{!v.height}" />
+    <lightning:input name="input2" label="Enter weight" value="{!v.weight}" />
+    <br/>
+       <lightning:button label = 'Calc BMI' onclick = '{!c.bmiMethod}'/>
+        <br/>
+          El BMI es {!v.bmi}
+        </lightning:card>
+    </div>
+</aura:component>
