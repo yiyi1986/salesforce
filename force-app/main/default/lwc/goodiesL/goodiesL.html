@@ -1,20 +1,22 @@
 <template>
-    <template if:true={newsarticles.data}>
+   
         <div class="slds-size_3-of-4">
-            <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-large container">News Widget
-              
-                    <template for:each={newsarticles.data} for:item="goo">
-                        <lightning-input 
-                        key={goo.title} 
-                        label={goo.title} 
-                        type="checkbox" 
-                        data-value={goo.title} 
-                        onchange={handleChangeEvent}>
-                    </lightning-input>
-                    </template>
-             
+            
+                <lightning-card title="Display Goodies" icon-name="custom:custom63">
+                    <lightning-radio-group name="ATradioGroup" 
+                    label="New Articles "
+                    options={options}
+                    value={value}
+                    type="radio"
+                    onchange={handleChange}>
+                </lightning-radio-group>
+                </br>
+                    <lightning-button label="Add Goodie" onclick={insertValue}></lightning-button>
+                  
+                    <p> seleccionado: {selectedValue}</p>
 
-            </div>
+                </lightning-card>
+    
         </div>
-    </template>
+  
 </template>

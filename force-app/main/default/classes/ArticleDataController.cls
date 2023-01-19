@@ -43,4 +43,16 @@ public with sharing class ArticleDataController {
 		@AuraEnabled public String content{get;set;}
 		@AuraEnabled public source source{get;set;}
 	}
+
+  @AuraEnabled
+    public static void insertGoodie(Goodie__c newgoodie){
+     
+      try{         
+            insert newgoodie;
+            system.debug('Goodie'+newgoodie);
+        }catch(Exception ex){
+            throw new AuraHandledException(ex.getMessage());
+        }
+    }
+ 
 }
