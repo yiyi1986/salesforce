@@ -1,49 +1,17 @@
 ({
- myAction : function(component, event, helper) 
-    {
-        var ConList = component.get("c.getRelatedList");
-        ConList.setParams
-        ({
-            recordId: component.get("v.recordId")
+    doInit: function(component, event, helper) {
+        helper.getContactList(component);
+    },
+    searchKeyChange: function(component, event) {
+        var searchKey = component.find("searchKey").get("v.value");
+        console.log('searchKey:::::'+searchKey);
+        var action = component.get("c.searchNameContacts");
+        action.setParams({
+            "searchKey": searchKey
         });
-        
-        ConList.setCallback(this, function(data) 
-                           {
-                               component.set("v.ContactList", data.getReturnValue());
-                           });
-        $A.enqueueAction(ConList);
- },
-    SearchAction : function(component, event, helper) 
-    {
-        var ConList = component.get("c.searchContacts");
-        ConList.setParams
-        ({
-            searchTerm: component.get("v.searchTerm")
+        action.setCallback(this, function(a) {
+            component.set("v.ContactList", a.getReturnValue());
         });
-     
-        ConList.setCallback(this, function(data) 
-                           {
-                               component.set("v.ContactList", data.getReturnValue());
-                           });
-            console.log('searchKey:::::'+ConList);
-        $A.enqueueAction(ConList);
- }
-     
-/*onSearchTermChange: function( component, event, helper ) {
-        // search anytime the term changes
-        var searchTerm = component.get( "v.searchTerm" );
-        // to improve performance, particularly for fast typers,
-        // we wait a small delay to check when user is done typing
-        var delayMillis = 500;
-        // get timeout id of pending search action
-        var timeoutId = component.get( "v.searchTimeoutId" );
-        // cancel pending search action and reset timer
-        clearTimeout( timeoutId );
-        // delay doing search until user stops typing
-        // this improves client-side and server-side performance
-        timeoutId = setTimeout( $A.getCallback( function() {
-            helper.handleSearch( component, searchTerm );
-        }), delayMillis );
-        component.set( "v.searchTimeoutId", timeoutId );
-    }*/
+        $A.enqueueAction(action);
+    }   
 })

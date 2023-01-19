@@ -1,18 +1,15 @@
-({
-    // code in the helper is reusable by both
-    // the controller.js and helper.js files
-    handleSearch: function( component, searchTerm ) {
-        var action = component.get( "c.searchContacts" );
-        action.setParams({
-            searchTerm: searchTerm
+({      
+    getContactList: function(component) {
+        var action = component.get('c.getRelatedList');
+        action.setParams
+        ({
+            recordId: component.get("v.recordId")
         });
-        action.setCallback( this, function( response ) {
-            var event = $A.get( "e.c:ContactsLoaded" );
-            event.setParams({
-                "contacts": response.getReturnValue()
-            });
-            event.fire();
+       
+        action.setCallback(this, function(actionResult) {
+            component.set('v.ContactList', actionResult.getReturnValue());
         });
-        $A.enqueueAction( action );
+        $A.enqueueAction(action);
+       
     }
 })

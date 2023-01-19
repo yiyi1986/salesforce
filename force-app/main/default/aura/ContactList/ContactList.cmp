@@ -1,16 +1,14 @@
-<aura:component controller = "ContactAccountController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
-   <aura:attribute name="recordId" type="Id" />
-    <aura:attribute name="ContactList" type="Contact[]" />
-    <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
-    <aura:attribute name="searchTerm" type="String" default=""/>
+<aura:component controller="ContactAccountController" implements="flexipage:availableForRecordHome,force:hasRecordId"
+    access="global">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="ContactList" type="List" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="searchTerm" type="String" default="" />
+
     <lightning:card iconName="standard:work_capacity_usage" title="Contacts List">
-        <lightning:input
-                label="Search"
-                variant="label-hidden"
-                value="{!v.searchTerm}"
-                placeholder="Search by name"
-                onchange="{!c.SearchAction}"/>
-        
+        <lightning:input type="text" name="searchKey" label="Enter" aura:id="searchKey" onchange="{!c.searchKeyChange}"
+            placeholder="Search" />
+
         <aura:if isTrue="{!not(empty(v.ContactList))}">
             <table class="slds-table slds-table_cell-buffer slds-table_bordered">
                 <thead>
@@ -24,13 +22,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <aura:iteration  items="{!v.ContactList}" var="con">
+                    <aura:iteration items="{!v.ContactList}" var="con">
                         <tr class="slds-hint-parent">
                             <td data-label="File Name">
-                                <div class="slds-truncate" title="File Name">{!con.FirstName}</div>  
+                                <div class="slds-truncate" title="File Name">{!con.FirstName}</div>
                             </td>
                             <td data-label="File Name">
-                                <div class="slds-truncate" title="File Name">{!con.LastName}</div>  
+                                <div class="slds-truncate" title="File Name">{!con.LastName}</div>
                             </td>
                         </tr>
                     </aura:iteration>
