@@ -16,7 +16,9 @@
                     <p> seleccionado: {selectedValue}</p>
 
                 </lightning-card>
-    
+                <template if:true={selectedValue}>
+                    <c-goodie-details contact={alldata} onselected={selectedValue}></c-goodie-details>
+                </template>
         </div>
   
 </template>

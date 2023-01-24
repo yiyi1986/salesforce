@@ -3,9 +3,9 @@ import callNewsPoint from "@salesforce/apex/ArticleDataController.callNewsPoint"
 import insertGoodie from "@salesforce/apex/ArticleDataController.insertGoodie";
 
 export default class GoodiesL extends LightningElement {
-
+// contactId
     @api recordId;
-
+//
     @track selectedValue ='';
     @track options = [];
     @track alldata ='';
@@ -17,7 +17,7 @@ export default class GoodiesL extends LightningElement {
         if(data) {
             this.alldata =data;
             let optionsValues = [];
-          //  console.log('data.length>> ' + JSON.stringify(data[0]));
+       
             let key=0;
             for(const list of data){
                 optionsValues.push({
