@@ -1,0 +1,74 @@
+<apex:page showHeader="false" applyHtmlTag="false" docType="html-5.0" controller="VisualforceController">
+    <html lang="en" ng-app="yiselapp">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+        <script>
+
+            var yiselapp = angular.module('yiselapp', []);
+
+            yiselapp.controller('myctrl', function ($scope) {
+
+                $scope.contacts = {!account}            
+}
+              $scope.myfuncion = function (item) {
+                    Visualforce.remoting.Manager.invokeAction(
+                        '{!$RemoteAccion.VisualforceController.getContact}', item,
+                     function (result, event) {
+                          if(event.status){
+                            if(result.length  > 0) {
+                                $scope.contacts = result;
+                                $msg = '';
+                            }  
+                        else
+                        {
+                                $scope.contacts = '';
+                                $msg = ' no se encuentran ';
+                            }                                         
+                         }
+                        },
+                        {
+                           escape:false
+                        }
+                    );
+                }
+
+          });
+        </script>
+    </head>
+
+    <body ng-app="yiselapp" class="container" ng-controller="myctrl">
+        <h2 align="center" style="color: Gray;">mi titulo</h2>
+    <br/> <br/>
+    <p class="lead" style="color:gray">
+        Choose the Account:
+        <select ng-model="selectTextAccount" ng-change="myfuncion(selectTextAccount)">
+            <option ng-repeat = 'item in account' value="{{item.Id}}" >
+                {{item.Id}}
+            </option>           
+        </select>
+    </p>
+    <br/> <br/>
+    <h2 ng-show="selectTextAccount" style="color: Gray;">mi titulo</h2>
+    <div style="color:Gray" ng-show="selectTextAccount"> 
+        <b> Search:</b> &nbsp; <input ng-model="query"></input><br/> <br/>
+    </div>
+        <table class="table table-bordered" id="table" ng-show="selectTextAccount">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Id</th>
+            </tr>
+            <tr ng-repeat="contact in contacts | filter:query">
+                <td>{{contact.Name}}</td>
+                <td>{{contact.Email}}</td>
+                <td>{{contact.Id}}</td>
+            </tr>
+        </table>
+        <span style="color:green;font-size:x-large;">{{msg}}</span>
+    </body>
+</html>
+
+</apex:page>

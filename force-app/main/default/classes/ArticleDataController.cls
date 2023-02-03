@@ -41,7 +41,7 @@ public with sharing class ArticleDataController {
 		@AuraEnabled public String publishedAt{get;set;}
 		@AuraEnabled public String author{get;set;}
 		@AuraEnabled public String content{get;set;}
-		@AuraEnabled public source source{get;set;}
+	 @AuraEnabled public source source{get;set;}
 	}
 
   @AuraEnabled

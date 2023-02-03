@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : 
+  @group             : 
+  @last modified on  : 05-06-2021
+  @last modified by  : Yisel Sariol Guerra
+  Modifications Log 
+
+-->
+<apex:page showHeader="false" 
+            sidebar="false" 
+            standardStylesheets="false" 
+            applyHtmlTag="false" 
+            applyBodyTag="false" 
+            docType="html-5.0"
+            cache="false"
+            controller="vfejemplo">
+<!-- Begin Default Content REMOVE THIS -->
+<h1>Congratulations</h1>
+This is your new Page {!name}
+<!-- End Default Content REMOVE THIS -->
+</apex:page>
