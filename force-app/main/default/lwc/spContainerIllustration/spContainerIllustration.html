@@ -1,0 +1,48 @@
+<template>  
+  
+  <h1>Base</h1>
+  <c-sp-illustration heading="Lorem ipsum dolor" variant="Fishing Deals"></c-sp-illustration>
+  <br /><br />
+
+  <h1>With Message Body</h1>
+  <c-sp-illustration heading="Lorem ipsum dolor" message="Lorem ipsum dolor sit amet, consectetur" variant="Fishing Deals"></c-sp-illustration>
+  <br /><br />
+
+  <h1>Large Illustrations</h1>
+  <c-sp-illustration heading="Lorem ipsum dolor" message="Lorem ipsum dolor sit amet, consectetur" variant="Fishing Deals" image-size="large"></c-sp-illustration>
+  <br /><br />  
+
+  <h1>One Call to Action</h1>
+  <article class="slds-card">
+  <c-sp-illustration heading="Lorem ipsum dolor" variant="No Task" action="action">
+    <p slot="header">      
+      <a href="#" class="slds-card__header-link slds-truncate" title="Today&#x27;s Tasks">
+        <span class="slds-text-heading_small">Today&#x27;s Tasks</span>
+      </a>
+   </p>
+    <p slot="footer"> <a href="#">View All</a></p>
+  </c-sp-illustration>
+</article>
+  <br /><br />
+
+  <h1>Two Call to Action</h1>
+  <article class="slds-card">
+  <c-sp-illustration heading="Lorem ipsum dolor" variant="No Task" action="action">
+    <p slot="header">      
+      <a href="#" class="slds-card__header-link slds-truncate" title="Today&#x27;s Tasks">
+        <span class="slds-text-heading_small">Today&#x27;s Tasks</span>
+      </a>
+   </p>
+   <p class="slds-text-body_regular" slot="message">Lorem ipsum dolor sit amet, consectetur
+    <a href="#" class="slds-truncate" title="Learn More">Learn More</a>
+  </p>
+    <p slot="footer"> <a href="#">View All</a></p>
+  </c-sp-illustration>
+</article>
+  <br /><br />
+
+  <h1>Text Only</h1> 
+  <c-sp-illustration heading="Lorem ipsum dolor" message="Lorem ipsum dolor sit amet, consectetur"
+    text-only></c-sp-illustration>
+  <br /><br /> 
+</template>
